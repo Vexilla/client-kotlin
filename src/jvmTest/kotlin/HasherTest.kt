@@ -18,9 +18,4 @@ class HasherTest {
     fun `should get a value above 40 for a non working seed`() {
         assertTrue(Hasher(this.nonWorkingSeed).hashString(this.uuid) > 40)
     }
-
-    @Test
-    fun `this should definitely fail`() {
-        assertEquals(true, false);
-    }
 }

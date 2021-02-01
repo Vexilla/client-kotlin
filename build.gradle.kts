@@ -1,18 +1,34 @@
 plugins {
     kotlin("multiplatform") version "1.4.10"
+    `java-library`
+    `maven-publish`
+    signing
 }
 
-group = "me.cmgriffing"
-version = "1.0-SNAPSHOT"
+group = "io.github.vexilla"
+version = "0.0.1"
 
 dependencies {
     commonMainImplementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.+")
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("vexillaClient") {
+            from(components["java"])
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
 }
 
 
 repositories {
     mavenCentral()
 }
+
 
 kotlin {
     jvm {
@@ -67,4 +83,8 @@ kotlin {
         val nativeMain by getting
         val nativeTest by getting
     }
+}
+
+signing {
+    sign(publishing.publications["vexillaClient"])
 }

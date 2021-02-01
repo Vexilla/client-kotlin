@@ -19,9 +19,4 @@ class ClientTest {
 
     }
 
-    @Test
-    fun foo() {
-        assertTrue(false);
-    }
-
 }
